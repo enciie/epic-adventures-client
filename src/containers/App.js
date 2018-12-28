@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Link, Route } from 'react-router-dom';
+
 import Trips from './Trips';
+import './App.css';
+
 
 const trips = [
   {
@@ -27,11 +30,25 @@ const trips = [
 ]
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      trips: []
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Welcome to Epic Adventures</h1>
-        < Trips trips={trips} />
+          <div>
+            <nav>
+              <Link to="/trips">Adventures</Link>
+            </nav>
+
+          </div>
       </div>
     );
   }
