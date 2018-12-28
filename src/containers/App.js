@@ -12,9 +12,16 @@ const trips = [
   },
   {
     name: "Interlaken",
-    description: "winter village",
+    description: "Jungfrau mountains to explore",
     location: "Switzerland",
     img_url: "https://i.imgur.com/AxN7nwO.jpg",
+    user_id: 4
+  },
+  {
+    name: "Zermatt",
+    description: "Matterhorn views and ski slopes galore",
+    location: "Switzerland",
+    img_url: "https://i.imgur.com/2fJ4udv.jpg",
     user_id: 4
   }
 ]
