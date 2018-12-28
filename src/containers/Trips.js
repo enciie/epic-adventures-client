@@ -5,7 +5,7 @@ const Trips = (props) => (
     <div className="TripsContainer">
         <h2> Trips </h2>
         {props.trips.map(trip => 
-            <div className="TripCard" >
+            <div key={trip.id} className="TripCard" >
                 <img className="TripImage" src={trip.img_url} alt={trip.name} />
                 <h4>{trip.name}</h4>
                 <p> Location: {trip.location} </p>
