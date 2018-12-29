@@ -1,17 +1,49 @@
-import React from 'react';
-import './Trips.css';
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-const Trips = (props) => (
-    <div className="TripsContainer">
-        <h2> Trips </h2>
-        {props.trips.map(trip => 
-            <div key={trip.id} className="TripCard" >
-                <img className="TripImage" src={trip.img_url} alt={trip.name} />
-                <h4>{trip.name}</h4>
-                <p> Location: {trip.location} </p>
+import { fetchUser } from '../actions/userActions'
+import { fetchTrips, deleteTrip } from '../actions/tripActions'
+import { deleteComment } from '../actions/commentActions'
+
+
+import TripCard from '../components/TripCard'
+import TripForm from '../components/TripForm'
+
+import '../stylesheets/Trip.css'
+
+class Trips extends Component {
+    componentWillMount() {
+        this.props.fetchUser()
+        this.props.fetchTrips()
+    }
+
+    render() {
+        const { user, trips } = this.props
+
+        return (
+            <div>
+                <div> Logged as: {user.username} </div>
+                <h1>EPIC ADVENTURES</h1>
+                <TripForm />
+                {trips.map(trip => <TripCard key={trip.id} trip={trip} deleteTrip={this.props.deleteTrip} deleteComment={this.props.deleteComment} />)}
             </div>
-        )}
-    </div>
-);
+        )
+    }
+}
 
-export default Trips;
+const mapStateToProps = state => {
+    return {
+        user: state.user.current,
+        trips: state.trips.all
+    }
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchUser,
+    fetchTrips,
+    deleteTrip,
+    deleteComment
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trips)
