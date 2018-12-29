@@ -1,10 +1,10 @@
-const defaultState = {
+const initialState = {
     current: {}
 }
 
-export default function userReducer(state = defaultState, action) {
-    switch(action.type) {
-        case 'GET_USER':
+export default function userReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'SET_USER':
             return { ...state, current: action.payload }
         default: return state
     }
