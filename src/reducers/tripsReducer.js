@@ -1,32 +1,37 @@
 const initialState = {
-    current: {},
-    all: []
+    trip: {},
+    trips: []
 }
 
 export default function tripsReducer(state = initialState, action) {
     switch(action.type) {
         case 'FETCH_TRIPS':
-            return { ...state, all: action.payload }
+            return { ...state, trips: action.payload }
+
+        case 'FETCH_TRIP':
+            return { ...state, trip: action.payload }
 
         case 'CREATE_TRIP':
-            return { ...state, all: [...state.all, action.payload] }
+            return { ...state, trips: [...state.trips, action.payload] }
 
         case 'DELETE_TRIP':
-            return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id) }
+            return { ...state, trips: state.trips.filter(trip => trip.id !== action.payload.id) }
 
         case 'CREATE_COMMENT':
-            let all = [...state.all]
-            let idx = all.findIndex(trip => trip.id === action.payload.trip_id)
-            all[idx].comments.push(action.payload)
+        debugger;
+            let trips = [...state.trips]
+            let idx = trips.findIndex(trip => trip.id === action.payload.trip_id)
+            trips[idx].comments.push(action.payload)
 
-            return { ...state, all }
+            return { ...state, trips }
 
         case 'DELETE_COMMENT':
-            all = [...state.all]
-            idx = all.findIndex(trip => trip.id === action.payload.trip_id)
-            all[idx].comments = all[idx].comments.filter(comment => comment.id !== action.payload.id)
+            trips = [...state.trips]
+            idx = trips.findIndex(trip => trip.id === action.payload.trip_id)
+            trips[idx].comments = trips[idx].comments.filter(comment => comment.id !== action.payload.id)
 
-            return { ...state, all }
+            return { ...state, trips }
+
         default: return state
     }
 }
