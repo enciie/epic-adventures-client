@@ -12,11 +12,11 @@ class CommentForm extends Component {
             content: ""
         }
 
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
+        this.onChange = this.handleChange.bind(this)
+        this.onSubmit = this.handleSubmit.bind(this)
     }
 
-    onChange(e) {
+    handleChange = (e) => {
         const field = e.target.name
         let state = this.state
 
@@ -24,7 +24,7 @@ class CommentForm extends Component {
         this.setState(state)
     }
 
-    onSubmit(e) {
+    handleSubmit = (e) =>  {
         e.preventDefault()
 
         const { tripId } = this.props
@@ -36,9 +36,9 @@ class CommentForm extends Component {
         const { content } = this.state
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input name="content" placeholder="Content" value={content} onChange={this.onChange} />
-                <button type="submit">Add</button>
+            <form onSubmit={this.handleSubmit}>
+                <input name="content" placeholder="Content" value={content} onChange={this.handleChange} />
+                <button type="submit">Leave A Comment</button>
             </form>
         )
     }
