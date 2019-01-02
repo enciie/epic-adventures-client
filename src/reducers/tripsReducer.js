@@ -9,6 +9,7 @@ export default function tripsReducer(state = initialState, action) {
             return { ...state, trips: action.payload }
 
         case 'FETCH_TRIP':
+        debugger;
             return { ...state, trip: action.payload }
 
         case 'CREATE_TRIP':
