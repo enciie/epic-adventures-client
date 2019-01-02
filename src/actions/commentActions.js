@@ -23,7 +23,7 @@ export const fetchComments = trip => {
     }
 }
 
-export const createComment = (comments, tripId) => {
+export const createComment = (comment, tripId) => {
     let data = {
         method: 'POST',
         headers: {
@@ -31,11 +31,11 @@ export const createComment = (comments, tripId) => {
             'Content-Type': 'application/json',
             'Authorization': sessionStorage.jwt
         },
-        body: JSON.stringify({ comment: comments })
+        body: JSON.stringify({ comment: comment })
     }
 
     return dispatch => {
-        fetch(`${baseUrl}/todos/${tripId}/comments`, data)
+        fetch(`${baseUrl}/trips/${tripId}/comments`, data)
             .then(response => response.json())
             .then(comments => dispatch({
                 type: 'CREATE_COMMENT',
@@ -58,9 +58,9 @@ export const deleteComment = (id, tripId) => {
     return dispatch => {
         fetch(`${baseUrl}/trips/${tripId}/comments/${id}`, data)
             .then(response => response.json())
-            .then(comments => dispatch({
+            .then(comment => dispatch({
                 type: 'DELETE_COMMENT',
-                payload: comments
+                payload: comment
             }))
             .catch(err => err)
     }
