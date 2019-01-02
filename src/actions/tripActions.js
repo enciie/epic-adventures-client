@@ -21,6 +21,28 @@ export const fetchTrips = () => {
     }
 }
 
+export const fetchCurrentTrip = id => {
+    let data = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.jwt
+        }
+    }
+
+    return dispatch => {
+        fetch(`${baseUrl}/trips/${id}`, data)
+            .then(response => response.json())
+            .then(trip => dispatch({
+                type: 'FETCH_TRIP',
+                payload: trip
+            }))
+            .catch(err => err)
+    }
+}
+
+
 export const createTrip = trip => {
     let data = {
         method: 'POST',
