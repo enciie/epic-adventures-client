@@ -20,20 +20,19 @@ class Signup extends Component {
         this.onChange = this.onChange.bind(this)
     }
 
-    onChange(e) {
-        const field = e.target.name
-        let state = this.state
-
-        state[field] = e.target.value
-        this.setState(state)
+    handlenChange = (event) => {
+        // const value = event.target.value
+        // const name = event.target.name
+        const { name, value } = event.target
+        this.setState({
+            [name]: value,
+        })
     }
 
-    onSubmit(e) {
-        e.preventDefault()
-        debugger;
+    handleSubmit(event) {
+        event.preventDefault()
         const user = this.state
         this.props.signupUser(user, () => this.props.history.push('/'))
-        debugger;
     }
 
     render() {
@@ -42,11 +41,11 @@ class Signup extends Component {
         return (
             <>
                 <h1>Sign Up</h1>
-                <form onSubmit={ this.onSubmit }>
-                    <input name="username" placeholder="Username" value={username} onChange={this.onChange} /><br />
+                <form onSubmit={ this.handleSubmit }>
+                    <input name="username" placeholder="Username" value={username} onChange={this.handleChange} /><br />
                     <input name="email" placeholder="Email" value={email} onChange={this.onChange} /><br />
-                    <input type='password' name="password" placeholder="Password" value={password} onChange={this.onChange} /><br />
-                    <input type='password' name="password_confirmation" placeholder="Password Confirmation" value={password_confirmation} onChange={this.onChange} /><br />
+                    <input type='password' name="password" placeholder="Password" value={password} onChange={this.handleChange} /><br />
+                    <input type='password' name="password_confirmation" placeholder="Password Confirmation" value={password_confirmation} onChange={this.handleChange} /><br />
                     <button type="submit">Signup</button>
                 </form>
                 <Link to='/login'>Log In</Link>

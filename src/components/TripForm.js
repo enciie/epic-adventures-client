@@ -22,24 +22,27 @@ class TripForm extends Component {
         this.onSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange = (e) => {
-        const field = e.target.name
-        let state = this.state
-
-        state[field] = e.target.value
-        this.setState(state)
+    handleChange = (event) => {
+        // const value = event.target.value
+        // const name = event.target.name
+        const { name, value } = event.target
+        this.setState({
+            [name]: value,
+        })
     }
     
-    handleSubmit = (e) => {
-        e.preventDefault()
+    handleSubmit = (event) => {
+        event.preventDefault()
 
         this.props.createTrip(this.state)
+        debugger;
         this.setState({
             name: "",
             description: "",
             location: "",
             img_url: "",
         })
+        
     }
 
     render() {
