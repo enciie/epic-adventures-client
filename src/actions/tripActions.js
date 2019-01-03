@@ -21,6 +21,27 @@ export const fetchTrips = () => {
     }
 }
 
+export const fetchUserTrips = userId => {
+    let data = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.jwt
+        }
+    }
+
+    return dispatch => {
+        fetch(`${baseUrl}/users/${userId}/user_trips`, data)
+            .then(response => response.json())
+            .then(trips => dispatch({
+                type: 'FETCH_USER_TRIPS',
+                payload: trips
+            }))
+            .catch(err => err)
+    }
+}
+
 export const fetchCurrentTrip = id => {
     let data = {
         method: 'GET',
@@ -42,7 +63,6 @@ export const fetchCurrentTrip = id => {
     }
 }
 
-
 export const createTrip = trip => {
     let data = {
         method: 'POST',
@@ -59,6 +79,28 @@ export const createTrip = trip => {
             .then(response => response.json())
             .then(trip => dispatch({
                 type: 'CREATE_TRIP',
+                payload: trip
+            }))
+            .catch(err => err)
+    }
+}
+
+export const editTrip = trip => {
+    let data = {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.jwt
+        },
+        body: JSON.stringify({ trip })
+    }
+
+    return dispatch => {
+        fetch(`${baseUrl}/trips/${trip.id}`, data)
+            .then(response => response.json())
+            .then(trip => dispatch({
+                type: 'EDIT_TRIP',
                 payload: trip
             }))
             .catch(err => err)
