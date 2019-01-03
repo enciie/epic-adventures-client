@@ -16,18 +16,19 @@ class CommentForm extends Component {
         this.onSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange = (e) => {
-        const field = e.target.name
-        let state = this.state
-
-        state[field] = e.target.value
-        this.setState(state)
+    handleChange = (event) => {
+        // const value = event.target.value
+        // const name = event.target.name
+        const { name, value } = event.target
+        this.setState({
+            [name]: value,
+        })
     }
 
-    handleSubmit = (e) =>  {
-        e.preventDefault()
-
+    handleSubmit = (event) =>  {
+        event.preventDefault()
         const { tripId } = this.props
+        debugger;
         this.props.createComment(this.state, tripId)
         this.setState({ content: "" })
     }
@@ -37,7 +38,12 @@ class CommentForm extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <input name="content" placeholder="Content" value={content} onChange={this.handleChange} />
+                <textarea 
+                    name="content" 
+                    placeholder="Content" 
+                    value={content} 
+                    onChange={this.handleChange}
+                /><br />
                 <button type="submit">Leave A Comment</button>
             </form>
         )
