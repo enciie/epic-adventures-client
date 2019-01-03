@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3001/api';
 
-export const fetchComments = trip => {
+export const fetchComments = id => {
     let data = {
         method: 'GET',
         headers: {
@@ -11,15 +11,15 @@ export const fetchComments = trip => {
     }
 
     return dispatch => {
-        fetch(`${baseUrl}/trips/${trip.id}/comments`, data)
+        fetch(`${baseUrl}/trips/${id}/comments`, data)
             .then(response => response.json())
-            .then(comments => {
+            .then(trip => {
                 dispatch({
                     type: 'FETCH_COMMENTS',
-                    payload: comments
+                    payload: trip.comments
                 })
             })
-            .catch(err => err)
+            .catch(error => error)
     }
 }
 
@@ -35,13 +35,13 @@ export const createComment = (comment, tripId) => {
     }
 
     return dispatch => {
-        fetch(`${baseUrl}/trips/${tripId}/comments`, data)
+        fetch(`${ baseUrl }/trips/${ tripId }/comments`, data)
             .then(response => response.json())
-            .then(comments => dispatch({
+            .then(comment => dispatch({
                 type: 'CREATE_COMMENT',
-                payload: comments
+                payload: comment
             }))
-            .catch(err => err)
+            .catch(error => error)
     }
 }
 
@@ -62,6 +62,6 @@ export const deleteComment = (id, tripId) => {
                 type: 'DELETE_COMMENT',
                 payload: comment
             }))
-            .catch(err => err)
+            .catch(error => error)
     }
 }

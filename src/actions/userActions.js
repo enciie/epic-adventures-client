@@ -23,7 +23,7 @@ export const loginUser = (user, callback) => {
 
                 callback()
             })
-            .catch(err => err)
+            .catch(error => error)
     }
 }
 
@@ -50,7 +50,7 @@ export const signupUser = (user, callback) => {
 
                 callback()
             })
-            .catch(err => err)
+            .catch(error => error)
     }
 }
 
@@ -73,7 +73,7 @@ export const fetchUser = () => {
                     payload: user
                 })
             })
-            .catch(err => err)
+            .catch(error => error)
     }
 }
 
@@ -93,6 +93,6 @@ export const deleteUser = id => {
                 type: 'DELETE_TRIP',
                 payload: user
             }))
-            .catch(err => err)
+            .catch(error => error)
     }
 }
