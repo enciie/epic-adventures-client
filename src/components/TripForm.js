@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { createTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
@@ -35,14 +36,16 @@ class TripForm extends Component {
         event.preventDefault()
 
         this.props.createTrip(this.state)
-        debugger;
         this.setState({
             name: "",
             description: "",
             location: "",
             img_url: "",
+            editing: false
+            
         })
-        
+        debugger;
+        this.props.history.push('/trips/mytrips')
     }
 
     render() {
@@ -66,6 +69,8 @@ class TripForm extends Component {
                         <div>
                             <label htmlFor="description">Description</label><br />
                             <textarea
+                                rows="5"
+                                cols="28"
                                 name="description"
                                 placeholder="Description"
                                 value={description}
@@ -101,4 +106,4 @@ class TripForm extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ createTrip }, dispatch)
 
-export default connect(null, mapDispatchToProps)(TripForm)
+export default withRouter(connect(null, mapDispatchToProps)(TripForm))

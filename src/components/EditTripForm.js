@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { editTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
@@ -17,11 +18,15 @@ class EditTripForm extends Component {
             description: "",
             location: "",
             img_url: "",
+            editing: false
         }
+
+        this.onChange = this.handleChange.bind(this)
+        this.onSubmit = this.handleSubmit.bind(this)
     }
 
     //this is when we are going to modify the state
-    componentDidMount() {
+    componentWillMount() {
         this.setState({
            ...this.props.location.state.trip
        })
@@ -38,7 +43,8 @@ class EditTripForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-
+        const { trip } = this.props.location.state
+        debugger;
         this.props.editTrip(this.state)
         this.setState({
             name: "",
@@ -46,7 +52,10 @@ class EditTripForm extends Component {
             location: "",
             img_url: "",
         })
-
+        this.props.history.push({
+            pathname: `/trips/${trip.id}`,
+            state: { trip }
+        })
     }
 
     render() {
@@ -107,4 +116,4 @@ class EditTripForm extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ editTrip }, dispatch)
 
-export default connect(null, mapDispatchToProps)(EditTripForm)
+export default withRouter(connect(null, mapDispatchToProps)(EditTripForm))
