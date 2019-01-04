@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { fetchCurrentTrip, deleteTrip } from '../actions/tripActions'
+import { fetchCurrentTrip, deleteTrip, editTrip } from '../actions/tripActions'
 import { deleteComment } from '../actions/commentActions'
 
 import TripShowPage from '../components/TripShowPage'
@@ -16,10 +16,11 @@ class TripShow extends Component {
     }
 
     render() {
-        console.log("trips", this.props)
         console.log("trip", this.props.trip)
+        console.log("user", this.props.user)
         console.log("User", this.props.trip.user)
         console.log("comments", this.props.trip.comments)
+        debugger;
         const { match } = this.props
         return (
             <div>
@@ -31,7 +32,8 @@ class TripShow extends Component {
                         match={match} 
                         trip={this.props.trip} 
                         user={this.props.trip.user} 
-                        comments={this.props.comments} 
+                        comments={this.props.comments}
+                        editTrip={this.props.editTrip}
                         deleteTrip={this.props.deleteTrip} 
                         deleteComment={this.props.deleteComment} 
                     />
@@ -43,18 +45,19 @@ class TripShow extends Component {
 
 const mapStateToProps = state => {
     console.log("STATE", state.trips.trip)
-    console.log("STATE2", state.trips.trip.comments)
-    console.log("STATE_USER", state.trips.trip.user)
+    console.log(state)
+    debugger;
     return {
         trip: state.trips.trip,
-        user: state.trips.trip.user,
-        comments: state.trips.trip.comments
+        // user: state.trips.trip.user,
+        // comments: state.trips.trip.comments
     }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchCurrentTrip,
     deleteTrip,
+    editTrip,
     deleteComment
 }, dispatch)
 
