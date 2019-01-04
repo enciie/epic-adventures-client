@@ -8,6 +8,7 @@ import TripShow from './containers/TripShow'
 import About from './containers/About'
 import TripForm from './components/TripForm'
 import UserTrips from './containers/UserTrips'
+import EditTripForm from './components/EditTripForm'
 
 export default (
     <Router>
@@ -20,10 +21,11 @@ export default (
             <Route path='/login' component={ () => loggedIn() ? <Redirect to="/" /> : <Login />} />
             <Route path='/logout' component={ () => logout() } />
             <Route exact path='/about' component={ About } />              
-            <Route exact path='/trips' component={ Trips } />
             <Route exact path='/trips/mytrips' component={ UserTrips } />
             <Route exact path='/trips/new' component={() => loggedIn() ? <TripForm /> : <Redirect to="/login" />} />
+            <Route exact path='/trips/:id/edit' component={ EditTripForm } />
             <Route exact path='/trips/:id' component={ TripShow } />
+            <Route exact path='/trips' component={Trips} />
         </Switch>
     </Router>
 )
@@ -35,3 +37,4 @@ const logout = () => {
 
     return <Redirect to="/login" />
 }
+
