@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { createComment } from '../actions/commentActions'
 
@@ -28,9 +29,13 @@ class CommentForm extends Component {
     handleSubmit = (event) =>  {
         event.preventDefault()
         const { tripId } = this.props
-        debugger;
         this.props.createComment(this.state, tripId)
         this.setState({ content: "" })
+        debugger;
+        // this.props.history.push({
+        //     pathname: `/trips/${tripId}`
+        // })
+        this.props.history.push(`/trips/${tripId}`)
     }
 
     render() {
@@ -54,4 +59,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     createComment
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(CommentForm)
+export default withRouter(connect(null, mapDispatchToProps)(CommentForm))
