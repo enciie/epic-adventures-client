@@ -27,6 +27,7 @@ class EditTripForm extends Component {
 
     //this is when we are going to modify the state
     componentWillMount() {
+
         this.setState({
            ...this.props.location.state.trip
        })
@@ -44,7 +45,6 @@ class EditTripForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const { trip } = this.props.location.state
-        debugger;
         this.props.editTrip(this.state)
         this.setState({
             name: "",
@@ -52,6 +52,7 @@ class EditTripForm extends Component {
             location: "",
             img_url: "",
         })
+        debugger;
         this.props.history.push({
             pathname: `/trips/${trip.id}`,
             state: { trip }
