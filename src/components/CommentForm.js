@@ -29,12 +29,10 @@ class CommentForm extends Component {
     handleSubmit = (event) =>  {
         event.preventDefault()
         const { tripId } = this.props
+
         this.props.createComment(this.state, tripId)
         this.setState({ content: "" })
-        debugger;
-        // this.props.history.push({
-        //     pathname: `/trips/${tripId}`
-        // })
+        //withRouter
         this.props.history.push(`/trips/${tripId}`)
     }
 
