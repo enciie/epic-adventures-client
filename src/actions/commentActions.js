@@ -1,27 +1,28 @@
 const baseUrl = 'http://localhost:3001/api';
 
-export const fetchComments = id => {
-    let data = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': sessionStorage.jwt
-        }
-    }
+// export const fetchComments = id => {
+//     let data = {
+//         method: 'GET',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': sessionStorage.jwt
+//         }
+//     }
 
-    return dispatch => {
-        fetch(`${baseUrl}/trips/${id}/comments`, data)
-            .then(response => response.json())
-            .then(trip => {
-                dispatch({
-                    type: 'FETCH_COMMENTS',
-                    payload: trip.comments
-                })
-            })
-            .catch(error => error)
-    }
-}
+//     return dispatch => {
+//         debugger;
+//         fetch(`${baseUrl}/trips/${id}/comments`, data)
+//             .then(response => response.json())
+//             .then(comments => {
+//                 dispatch({
+//                     type: 'FETCH_COMMENTS',
+//                     payload: comments
+//                 })
+//             })
+//             .catch(error => error)
+//     }
+// }
 
 export const createComment = (comment, tripId) => {
     let data = {
