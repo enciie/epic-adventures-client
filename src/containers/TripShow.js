@@ -1,42 +1,60 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
+import { fetchUser } from '../actions/userActions'
 import { fetchCurrentTrip, deleteTrip, editTrip } from '../actions/tripActions'
 import { deleteComment } from '../actions/commentActions'
 
 import TripShowPage from '../components/TripShowPage'
+import CommentForm from '../components/CommentForm'
 import NavBar from '../components/NavBar'
 
 class TripShow extends Component {
+    constructor() {
+        super()
+
+        this.removeTrip = this.removeTrip.bind(this)
+    }
 
     componentWillMount() {
         const id = this.props.match.params.id;
         this.props.fetchCurrentTrip(id);
+        this.props.fetchUser();
+    }
+
+    removeTrip(id) {
+        const { deleteTrip, history } = this.props
+        deleteTrip(id)
+        debugger;
+        history.push('/trips/mytrips')  
     }
 
     render() {
         console.log("trip", this.props.trip)
-        console.log("user", this.props.user)
-        console.log("User", this.props.trip.user)
+        console.log("TripUser", this.props.trip.user)
+        console.log("User", this.props.user)
         console.log("comments", this.props.trip.comments)
-        debugger;
-        const { match } = this.props
+        const { match, trip, user } = this.props
         return (
             <div>
                 <NavBar />
-                <div>
+                <div className="TripShowContainer">
+                    <p className="Username">Logged in as: {this.props.user.username}</p> 
                     <h1>WHAT AN ADVENTURE...</h1>
                     <TripShowPage 
-                        key={ this.props.trip.id }
+                        key={ trip.id }
                         match={match} 
-                        trip={this.props.trip} 
-                        user={this.props.trip.user} 
-                        comments={this.props.comments}
+                        trip={trip}
+                        user={user} 
+                        comments={trip.comments}
                         editTrip={this.props.editTrip}
-                        deleteTrip={this.props.deleteTrip} 
+                        deleteTrip={this.removeTrip} 
                         deleteComment={this.props.deleteComment} 
                     />
+                    {/* {this.renderButtons()} */}
+                    <CommentForm tripId={trip.id} />
                 </div>
             </div>
         )
@@ -44,21 +62,21 @@ class TripShow extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("STATE", state.trips.trip)
-    console.log(state)
-    debugger;
+    console.log("STATEcurrent", state.trips.current)
+    console.log("state", state)
     return {
-        trip: state.trips.trip,
-        // user: state.trips.trip.user,
-        // comments: state.trips.trip.comments
+        trip: state.trips.current,
+        trips: state.trips.all,
+        user: state.user.current
     }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchUser,
     fetchCurrentTrip,
     deleteTrip,
     editTrip,
     deleteComment
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(TripShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TripShow));
