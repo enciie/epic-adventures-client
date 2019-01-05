@@ -21,26 +21,26 @@ export const fetchTrips = () => {
     }
 }
 
-export const fetchUserTrips = userId => {
-    let data = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': sessionStorage.jwt
-        }
-    }
+// export const fetchUserTrips = userId => {
+//     let data = {
+//         method: 'GET',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': sessionStorage.jwt
+//         }
+//     }
 
-    return dispatch => {
-        fetch(`${baseUrl}/users/${userId}/user_trips`, data)
-            .then(response => response.json())
-            .then(trips => dispatch({
-                type: 'FETCH_USER_TRIPS',
-                payload: trips
-            }))
-            .catch(err => err)
-    }
-}
+//     return dispatch => {
+//         fetch(`${baseUrl}/users/${userId}/user_trips`, data)
+//             .then(response => response.json())
+//             .then(trips => dispatch({
+//                 type: 'FETCH_USER_TRIPS',
+//                 payload: trips
+//             }))
+//             .catch(err => err)
+//     }
+// }
 
 export const fetchCurrentTrip = id => {
     let data = {
@@ -73,7 +73,7 @@ export const createTrip = trip => {
         },
         body: JSON.stringify({ trip })
     }
-
+    debugger
     return dispatch => {
         fetch(`${baseUrl}/trips`, data)
             .then(response => response.json())
@@ -97,6 +97,7 @@ export const editTrip = trip => {
     }
 
     return dispatch => {
+        debugger;
         fetch(`${baseUrl}/trips/${trip.id}`, data)
             .then(response => response.json())
             .then(trip => dispatch({
@@ -118,6 +119,7 @@ export const deleteTrip = id => {
     }
 
     return dispatch => {
+        debugger;
         fetch(`${baseUrl}/trips/${id}`, data)
             .then(response => response.json())
             .then(trip => dispatch({
