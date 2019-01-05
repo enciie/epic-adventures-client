@@ -1,0 +1,11 @@
+.AboutContainer{
+    padding: 16px;
+    text-align: center;
+}
+
+.AboutImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%
+} 
