@@ -1,5 +1,13 @@
+.TripListContainter{
+    padding: 16px;
+}
+
 .TripsContainer {
     padding: 16px;
+}
+
+.Username {
+    float: right;
 }
 
 .TripCard {
@@ -20,3 +28,7 @@
     width: 100%;
     height: 80%;
 } 
+
+.Header {
+    padding: 10px;
+}

@@ -5,3 +5,11 @@
 .TripShowImage {
     width: 30%;
 } 
+
+.TripShowContainer{
+    padding: 16px;
+}
+
+.Username {
+    float: right;
+}

@@ -18,7 +18,7 @@ li.NavBar a {
   text-decoration: none;
 }
 
-li.NavBarLogo {
+li.NavBarLogo a {
   display: block;
   color: white;
   padding: 14px 16px;
