@@ -4,10 +4,6 @@ const initialState = {
     all: []
 }
 
-let all;
-let idx;
-let newState;
-
 export default function tripsReducer(state = initialState, action) {
     switch(action.type) {
         case 'FETCH_TRIPS':
@@ -16,39 +12,37 @@ export default function tripsReducer(state = initialState, action) {
         case 'FETCH_TRIP':
             return { ...state, current: action.payload }
 
-        // case 'FETCH_USER_TRIPS':
-        // debugger;
-        //     return { ...state, userTrips: action.payload }
-
         case 'CREATE_TRIP':
-            return { ...state, all: [...state.all, action.payload], current: action.payload }
+            return { 
+                    ...state, 
+                    all: [...state.all, action.payload], 
+                    current: action.payload 
+                }
 
         case 'EDIT_TRIP':
-            newState = [...state.all]
-            idx = all.findIndex(trip => trip.id === action.payload.trip_id)
-            newState.splice(idx, 1, action.payload)
-
+            let all = [...state.all]
+            let idx = all.findIndex(trip => trip.id === action.payload.id)
+            all.splice(idx, 1, action.payload)
             return {
                 ...state,
-                all: newState,
+                all: all,
                 current: action.payload
             }
 
         case 'DELETE_TRIP':
-        debugger;
-            return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id) }
+            return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id), current: {} }
 
         case 'CREATE_COMMENT':
             all = [...state.all]
             idx = all.findIndex(trip => trip.id === action.payload.trip_id)
             all[idx].comments.push(action.payload)
-            return { ...state, current: all[idx] }
+            return { ...state, all: all, current: all[idx] }
 
         case 'DELETE_COMMENT':
             all = [...state.all]
             idx = all.findIndex(trip => trip.id === action.payload.trip_id)
             all[idx].comments = all[idx].comments.filter(comment => comment.id !== action.payload.id)
-            return { ...state, current: all[idx] }
+            return { ...state, all: all, current: all[idx] }
 
         default: 
             return state
