@@ -36,13 +36,12 @@ class TripForm extends Component {
         event.preventDefault()
 
         this.props.createTrip(this.state)
+        debugger;
         this.setState({
             name: "",
             description: "",
             location: "",
-            img_url: "",
-            editing: false
-            
+            img_url: ""   
         })
         debugger;
         this.props.history.push('/trips/mytrips')
@@ -50,7 +49,8 @@ class TripForm extends Component {
 
     render() {
         const { name, description, location, img_url } = this.state
-
+        console.log("stateAddForm", this.state)
+        console.log("propsAddForm", this.props)
         return (
             <div>
                 <NavBar />

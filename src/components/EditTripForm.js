@@ -17,8 +17,7 @@ class EditTripForm extends Component {
             name: "",
             description: "",
             location: "",
-            img_url: "",
-            editing: false
+            img_url: ""
         }
 
         this.onChange = this.handleChange.bind(this)
@@ -27,7 +26,6 @@ class EditTripForm extends Component {
 
     //this is when we are going to modify the state
     componentWillMount() {
-
         this.setState({
            ...this.props.location.state.trip
        })
@@ -46,13 +44,13 @@ class EditTripForm extends Component {
         event.preventDefault()
         const { trip } = this.props.location.state
         this.props.editTrip(this.state)
+
         this.setState({
             name: "",
             description: "",
             location: "",
             img_url: "",
         })
-        debugger;
         this.props.history.push({
             pathname: `/trips/${trip.id}`,
             state: { trip }
@@ -60,8 +58,6 @@ class EditTripForm extends Component {
     }
 
     render() {
-        console.log("editFormState", this.state)
-        console.log("editFormProps", this.props)
         const { name, description, location, img_url } = this.state
 
         return (
