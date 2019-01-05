@@ -14,20 +14,20 @@ class Login extends Component {
             password: 'password'
         }
 
-        this.onSubmit = this.onSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.handleSubmit.bind(this)
+        this.onChange = this.handleChange.bind(this)
     }
 
-    onChange(e) {
-        const field = e.target.name
+    handleChange = (event) => {
+        const field = event.target.name
         let state = this.state
 
-        state[field] = e.target.value
+        state[field] = event.target.value
         this.setState(state)
     }
 
-    onSubmit(e) {
-        e.preventDefault()
+    handleSubmit = (event) => {
+        event.preventDefault()
 
         const user = this.state
         this.props.loginUser(user, () => this.props.history.push('/'))
@@ -39,9 +39,9 @@ class Login extends Component {
         return (
             <>
                 <h1>Log In</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input name="username" placeholder="Username" value={username} onChange={this.onChange} /><br />
-                    <input type='password' name="password" placeholder="Password" value={password} onChange={this.onChange} /><br />
+                <form onSubmit={this.handleSubmit}>
+                    <input name="username" placeholder="Username" value={username} onChange={this.handleChange} /><br />
+                    <input type='password' name="password" placeholder="Password" value={password} onChange={this.handleChange} /><br />
                     <button type="submit">Login</button>
                 </form>
                 <Link to='/signup'>Sign Up</Link>
