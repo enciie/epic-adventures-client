@@ -1,44 +1,56 @@
 const initialState = {
-    trip: {},
-    trips: []
+    current: {},
+    userTrips: [],
+    all: []
 }
+
+let all;
+let idx;
+let newState;
 
 export default function tripsReducer(state = initialState, action) {
     switch(action.type) {
         case 'FETCH_TRIPS':
-            return { ...state, trips: action.payload }
+            return { ...state, all: action.payload }
 
         case 'FETCH_TRIP':
-            return { ...state, trip: action.payload }
+            return { ...state, current: action.payload }
 
-        case 'FETCH_USER_TRIPS':
-        debugger;
-            return { ...state, trips: action.payload }
+        // case 'FETCH_USER_TRIPS':
+        // debugger;
+        //     return { ...state, userTrips: action.payload }
 
         case 'CREATE_TRIP':
-            return { ...state, trips: [...state.trips, action.payload] }
+            return { ...state, all: [...state.all, action.payload], current: action.payload }
 
         case 'EDIT_TRIP':
-        debugger;
-            return { ...state.trips.filter(trip => trip.id !== action.payload.id), trips: [...state.trips, action.payload] }
+            newState = [...state.all]
+            idx = all.findIndex(trip => trip.id === action.payload.trip_id)
+            newState.splice(idx, 1, action.payload)
+
+            return {
+                ...state,
+                all: newState,
+                current: action.payload
+            }
 
         case 'DELETE_TRIP':
-            return { ...state, trips: state.trips.filter(trip => trip.id !== action.payload.id) }
+        debugger;
+            return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id) }
 
         case 'CREATE_COMMENT':
-            let trips = [...state.trips]
-            let idx = trips.findIndex(trip => trip.id === action.payload.trip_id)
-            trips[idx].comments.push(action.payload)
-
-            return { ...state, trips }
+            all = [...state.all]
+            idx = all.findIndex(trip => trip.id === action.payload.trip_id)
+            all[idx].comments.push(action.payload)
+            return { ...state, current: all[idx] }
 
         case 'DELETE_COMMENT':
-            trips = [...state.trips]
-            idx = trips.findIndex(trip => trip.id === action.payload.trip_id)
-            trips[idx].comments = trips[idx].comments.filter(comment => comment.id !== action.payload.id)
-            
-            return { ...state, trips }
+            all = [...state.all]
+            idx = all.findIndex(trip => trip.id === action.payload.trip_id)
+            all[idx].comments = all[idx].comments.filter(comment => comment.id !== action.payload.id)
+            return { ...state, current: all[idx] }
 
-        default: return state
+        default: 
+            return state
     }
 }

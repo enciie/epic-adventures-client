@@ -97,7 +97,6 @@ export const editTrip = trip => {
     }
 
     return dispatch => {
-        debugger;
         fetch(`${baseUrl}/trips/${trip.id}`, data)
             .then(response => response.json())
             .then(trip => dispatch({
@@ -120,9 +119,9 @@ export const deleteTrip = id => {
 
     return dispatch => {
         debugger;
-        fetch(`${baseUrl}/trips/${id}`, data)
+        fetch(`${ baseUrl }/trips/${ id }`, data)
             .then(response => response.json())
-            .then(trip => dispatch({
+            .then(trip => dispatch ({
                 type: 'DELETE_TRIP',
                 payload: trip
             }))
