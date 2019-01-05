@@ -36,7 +36,6 @@ class TripForm extends Component {
         event.preventDefault()
 
         this.props.createTrip(this.state)
-        debugger;
         this.setState({
             name: "",
             description: "",

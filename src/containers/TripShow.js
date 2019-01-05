@@ -32,10 +32,6 @@ class TripShow extends Component {
     }
 
     render() {
-        console.log("trip", this.props.trip)
-        console.log("TripUser", this.props.trip.user)
-        console.log("User", this.props.user)
-        console.log("comments", this.props.trip.comments)
         const { match, trip, user } = this.props
         return (
             <div>
