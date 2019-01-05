@@ -73,7 +73,6 @@ export const createTrip = trip => {
         },
         body: JSON.stringify({ trip })
     }
-    debugger
     return dispatch => {
         fetch(`${baseUrl}/trips`, data)
             .then(response => response.json())
@@ -118,7 +117,6 @@ export const deleteTrip = id => {
     }
 
     return dispatch => {
-        debugger;
         fetch(`${ baseUrl }/trips/${ id }`, data)
             .then(response => response.json())
             .then(trip => dispatch ({
