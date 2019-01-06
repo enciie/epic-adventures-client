@@ -7,6 +7,7 @@ import { editTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
 
 import '../stylesheets/TripForm.css'
+import { Button } from 'mdbreact';
 
 class EditTripForm extends Component {
 
@@ -51,10 +52,12 @@ class EditTripForm extends Component {
             location: "",
             img_url: "",
         })
-        this.props.history.push({
-            pathname: `/trips/${trip.id}`,
-            state: { trip }
-        })
+        debugger;
+        this.props.history.push(`/trips/${trip.id}`)
+        // this.props.history.push({
+        //     pathname: `/trips/${trip.id}`,
+        //     state: { trip }
+        // })
     }
 
     render() {
@@ -64,7 +67,7 @@ class EditTripForm extends Component {
             <div>
                 <NavBar />
                 <div className="TripFormContainer">
-                    <h2 className="header">Edit Adventure</h2>
+                    <h2 className="header">Edit Adventure</h2><br/>
                     <form className="TripForm" onSubmit={this.handleSubmit}>
                         <div>
                             <label htmlFor="name">Title</label><br />
@@ -101,8 +104,8 @@ class EditTripForm extends Component {
                                 value={img_url}
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <button type="submit">Save</button>
+                        </div><br />
+                        <Button type="submit">Add</Button>
                     </form>
                 </div>
 

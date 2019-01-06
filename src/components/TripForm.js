@@ -7,6 +7,7 @@ import { createTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
 
 import '../stylesheets/TripForm.css'
+import { Button } from 'mdbreact';
 
 class TripForm extends Component {
     constructor() {
@@ -16,7 +17,7 @@ class TripForm extends Component {
             name: "",
             description: "",
             location: "",
-            img_url: "",
+            img_url: "https://i.imgur.com/IaEHwyB.jpg",
         }
 
         this.onChange = this.handleChange.bind(this)
@@ -54,7 +55,8 @@ class TripForm extends Component {
             <div>
                 <NavBar />
                 <div className="TripFormContainer">
-                    <h2 className="header">Add New Adventure</h2>
+                    <h2 className="header">Add New Adventure</h2><br/>
+                    <div>
                     <form className="TripForm" onSubmit={this.handleSubmit}>
                         <div>
                             <label htmlFor="name">Title</label><br />
@@ -93,9 +95,10 @@ class TripForm extends Component {
                                 value={img_url}
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <button type="submit">Add</button>
+                        </div><br/>
+                        <Button type="submit">Add</Button>
                     </form>
+                    </div>
                 </div>
                 
             </div>

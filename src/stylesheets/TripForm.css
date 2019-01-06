@@ -1,3 +1,12 @@
 .TripFormContainer {
-    padding: 16px;
+    padding: 50px;
+    text-align: center;
+}
+
+input {
+    width: 450px;
+}
+
+textarea {
+    width: 450px;
 }
