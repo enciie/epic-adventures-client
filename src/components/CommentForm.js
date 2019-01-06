@@ -31,8 +31,9 @@ class CommentForm extends Component {
         const { tripId } = this.props
 
         this.props.createComment(this.state, tripId)
+
         this.setState({ content: "" })
-        //withRouter
+
         this.props.history.push(`/trips/${tripId}`)
     }
 
@@ -40,15 +41,24 @@ class CommentForm extends Component {
         const { content } = this.state
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <textarea 
-                    name="content" 
-                    placeholder="Content" 
-                    value={content} 
-                    onChange={this.handleChange}
-                /><br />
-                <button type="submit">Leave A Comment</button>
-            </form>
+            <div class="media mt-3 shadow-textarea">
+                <div class="media-body">
+                    <div class="form-group basic-textarea rounded-corners">
+                        <form onSubmit={this.handleSubmit}>
+                            <textarea 
+                                name="content" 
+                                placeholder="Your comment here..." 
+                                value={content} 
+                                onChange={this.handleChange}
+                                class="form-control z-depth-1" 
+                                id="exampleFormControlTextarea3" 
+                                rows="3"
+                            /><br/>
+                            <button type="submit">Leave A Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
