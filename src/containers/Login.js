@@ -5,6 +5,9 @@ import { withRouter, Link } from 'react-router-dom'
 
 import { loginUser } from '../actions/userActions'
 
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+
+
 class Login extends Component {
     constructor() {
         super()
@@ -37,15 +40,46 @@ class Login extends Component {
         const { username, password } = this.state
 
         return (
-            <>
-                <h1>Log In</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input name="username" placeholder="Username" value={username} onChange={this.handleChange} /><br />
-                    <input type='password' name="password" placeholder="Password" value={password} onChange={this.handleChange} /><br />
-                    <button type="submit">Login</button>
-                </form>
-                <Link to='/signup'>Sign Up</Link>
-            </>
+            <MDBContainer>
+                <MDBRow center>
+                    <MDBCol md="4 col-md-offset-4">
+                        <form onSubmit={this.handleSubmit}>
+                            <p className="h5 text-center mb-4">Sign in</p>
+                            <div className="grey-text">
+                                <MDBInput
+                                    name="username" 
+                                    label="Your Username" 
+                                    value={username} 
+                                    onChange={this.handleChange} 
+                                    icon="user"
+                                    group
+                                    type="text"
+                                    validate
+                                    error="wrong"
+                                    success="right"
+                                />
+                                <MDBInput
+                                    type='password' 
+                                    name="password" 
+                                    label="Your Password" 
+                                    value={password} 
+                                    onChange={this.handleChange} 
+                                    icon="lock"
+                                    group
+                                    type="password"
+                                    validate
+                                />
+                            </div>
+                            <div className="text-center">
+                                <MDBBtn type="submit">Login</MDBBtn>
+                            </div>
+                            <div className="text-center">
+                                <Link to='/signup'>Sign Up</Link>
+                            </div>
+                        </form>
+                    </MDBCol>
+                </MDBRow>
+            </MDBContainer>
         )
     }
 }
