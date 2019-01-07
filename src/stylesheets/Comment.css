@@ -1,6 +1,78 @@
+
+.detailBox {
+    width:100%;
+    border:1px solid #bbb;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:50px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0.2;
+    border-bottom:1px dotted #bbb;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:12px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+
 .shadow-textarea textarea.form-control::placeholder {
     font-weight: 300;
 }
 .shadow-textarea textarea.form-control {
     padding-left: 0.8rem;
+}
+
+.form-group basic-textarea {
+    width: 90%;
 }

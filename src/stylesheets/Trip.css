@@ -10,9 +10,20 @@
     float: right;
 }
 
-.TripCard {
+.card {
     float: left;
     margin: 1.5%;
+    width: 30%;
+    height: 500px;
+}
+
+.img-fluid {
+    height: 350px;
+}
+
+.TripCard {
+    float: left;
+    margin: 1%;
     background: whitesmoke;
     width: 30%;
     height: 400px;
@@ -25,7 +36,7 @@
 }
 
 .TripImage {
-    width: 100%;
+    width: 80%;
     height: 80%;
 } 
 
