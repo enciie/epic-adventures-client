@@ -43,7 +43,7 @@ class Signup extends Component {
 
         return (
             <>
-                <h2 className="headerSignup">Your Journey Starts Here...</h2>
+                <h1 className="headerSignup">YOUR JOURNEY STARTS HERE...</h1>
                 <MDBContainer>
                     <MDBRow center>
                         <MDBCol md="4 col-md-offset-4">
