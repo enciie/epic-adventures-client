@@ -41,24 +41,26 @@ class CommentForm extends Component {
         const { content } = this.state
 
         return (
-            <div class="media mt-3 shadow-textarea">
-                <div class="media-body">
-                    <div class="form-group basic-textarea rounded-corners">
+            <div className="media mt-3 shadow-textarea">
+                <div className="media-body">
+                    <div className="form-group basic-textarea rounded-corners">
                         <form onSubmit={this.handleSubmit}>
                             <textarea 
                                 name="content" 
                                 placeholder="Your comment here..." 
                                 value={content} 
                                 onChange={this.handleChange}
-                                class="form-control z-depth-1" 
+                                className="form-control z-depth-1" 
                                 id="exampleFormControlTextarea3" 
                                 rows="3"
                             /><br/>
-                            <button type="submit">Leave A Comment</button>
+                            <button className="btn btn-default" type="submit">Leave A Comment</button>
                         </form>
                     </div>
                 </div>
             </div>
+
+            
         )
     }
 }
