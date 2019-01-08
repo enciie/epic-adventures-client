@@ -1,11 +1,18 @@
 import React from 'react'
 
-const Comment = ({ comment: { id, content, username }, tripId, deleteComment }) =>
-  <li className="Comment">
-    { content }
-    <b> - {username} </b>
-    <button onClick={ () => deleteComment(id, tripId) }>X</button>
-  </li>
+import '../stylesheets/Comment.css'
 
+// const Comment = ({ comment: { content, username } }) =>
+const Comment = ({ comment, user, deleteComment, tripId }) =>
+  <div className="commentText">
+    <span className="sub-text">{comment.username}</span>
+    {user.id === comment.user_id ? (
+      <button className="deleteComment btn" onClick={() => deleteComment(comment.id, tripId)}>X</button>
+    ) : (
+        ""
+      )}
+    <p className="">{comment.content}</p> 
+  
+</div>
 
 export default Comment;
