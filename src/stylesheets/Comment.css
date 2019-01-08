@@ -76,3 +76,11 @@
 .form-group basic-textarea {
     width: 90%;
 }
+
+.deleteComment {
+    background-color: white;
+    color: black;
+    font-size: 10px;
+    padding: 5px;
+    float : right;
+}
