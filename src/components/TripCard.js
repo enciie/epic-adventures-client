@@ -1,13 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
+// import { Link } from 'react-router-dom'
+import { Button, Card, CardBody, CardImage, CardTitle, CardText, Col } from 'mdbreact';
 
 import '../stylesheets/Trip.css'
 
-const Trip = ({ trip: { id, name, img_url, user: {username} } }) =>
-    <div className="TripCard">
-        <img className="TripImage" src={img_url} alt={name} />
-        <Link to={`/trips/${id}`}>{name}</Link>
-        <p>{username}</p>
-    </div>
+class TripCard extends Component {
+    render() {
 
-export default Trip;
+        const {trip} = this.props
+        return (
+            <Col>
+                <Card tripid={trip.id}>
+                    <CardImage
+                        className="trip-card img-fluid"
+                        src={trip.img_url}
+                        waves
+                    />
+                    <CardBody>
+                        <CardTitle>{trip.name}</CardTitle>
+                        <CardText>
+                            By: {trip.username}
+                        </CardText>
+                        <Button href={`/trips/${trip.id}`}>View Adventure</Button>
+                    </CardBody>
+                </Card>
+            </Col>
+        )
+    }
+}
+
+export default TripCard;
