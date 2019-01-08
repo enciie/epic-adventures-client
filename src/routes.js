@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Login from './containers/Login'
 import Signup from './containers/Signup'
 import Trips from './containers/Trips'
+import Inspiration from './containers/Inspiration'
 import TripShow from './containers/TripShow'
 import About from './containers/About'
 import TripForm from './components/TripForm'
@@ -20,7 +21,8 @@ export default (
             <Route path='/signup' component={ () => loggedIn() ? <Redirect to="/" /> : <Signup />} />
             <Route path='/login' component={ () => loggedIn() ? <Redirect to="/" /> : <Login />} />
             <Route path='/logout' component={ () => logout() } />
-            <Route exact path='/about' component={ About } />              
+            <Route exact path='/about' component={ About } />
+            <Route exact path='/trips/inspiration' component={Inspiration} />              
             <Route exact path='/trips/mytrips' component={ UserTrips } />
             <Route exact path='/trips/new' component={() => loggedIn() ? <TripForm /> : <Redirect to="/login" />} />
             <Route exact path='/trips/:id/edit' component={ EditTripForm } />
