@@ -12,13 +12,12 @@ import '../stylesheets/Trip.css'
 
 class UserTrips extends Component {
 
-    componentWillMount() {
-        this.props.fetchUser()
-        this.props.fetchTrips()
+    componentDidMount() {
+        this.props.fetchUser();
+        this.props.fetchTrips();
     }
 
     render() {
-        console.log("UserTripuser", this.props.user)
         const { user, trips, match } = this.props
         const userTrips = trips.filter(trip => trip.user.id === user.id)
         console.log("UserTrips", userTrips)
@@ -28,13 +27,15 @@ class UserTrips extends Component {
                 <div className="TripListContainter">
                     <p className="Username">Logged in as: {user.username}</p>
                     <h1 className="Header">MY EPIC ADVENTURES</h1>
-                    {userTrips.map(trip => 
+
+                    { userTrips.map(trip => 
                         <TripCard 
                             key={trip.id} 
                             match={match} 
                             trip={trip} 
                         />
                     )}
+
                 </div>
             </div>
         )
@@ -42,8 +43,7 @@ class UserTrips extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("UserTripstate", state)
-    console.log("state", state)
+    console.log("UserTripState", state)
     return {
         user: state.user.current,
         trips: state.trips.all

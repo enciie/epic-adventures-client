@@ -7,7 +7,6 @@ import { editTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
 
 import '../stylesheets/TripForm.css'
-import { Button } from 'mdbreact';
 
 class EditTripForm extends Component {
 
@@ -26,7 +25,8 @@ class EditTripForm extends Component {
     }
 
     //this is when we are going to modify the state
-    componentWillMount() {
+    componentDidMount() {
+   
         this.setState({
            ...this.props.location.state.trip
        })
@@ -42,8 +42,10 @@ class EditTripForm extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
         const { trip } = this.props.location.state
+  
         this.props.editTrip(this.state)
 
         this.setState({
@@ -52,12 +54,13 @@ class EditTripForm extends Component {
             location: "",
             img_url: "",
         })
-        debugger;
+
         this.props.history.push(`/trips/${trip.id}`)
         // this.props.history.push({
         //     pathname: `/trips/${trip.id}`,
         //     state: { trip }
         // })
+
     }
 
     render() {
@@ -85,6 +88,8 @@ class EditTripForm extends Component {
                                 placeholder="Description"
                                 value={description}
                                 onChange={this.handleChange}
+                                rows="5"
+                                cols="28"
                             />
                         </div>
                         <div>
@@ -105,7 +110,7 @@ class EditTripForm extends Component {
                                 onChange={this.handleChange}
                             />
                         </div><br />
-                        <Button type="submit">Add</Button>
+                        <button className="btn btn-default" type="submit">Update</button>
                     </form>
                 </div>
 

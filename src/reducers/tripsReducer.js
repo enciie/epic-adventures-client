@@ -28,7 +28,7 @@ export default function tripsReducer(state = initialState, action) {
             return {...state, all: all, current: action.payload }
 
         case 'DELETE_TRIP':
-        debugger;
+            debugger;
     
             console.log('DELETE_TRIP...', { ...state, all: state.all.filter(trip => trip.id !== action.payload.id), current: {} })
             return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id), current: {} }

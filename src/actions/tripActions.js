@@ -107,6 +107,7 @@ export const editTrip = trip => {
 }
 
 export const deleteTrip = id => {
+    debugger
     let data = {
         method: 'DELETE',
         headers: {
@@ -119,10 +120,15 @@ export const deleteTrip = id => {
     return dispatch => {
         fetch(`${ baseUrl }/trips/${ id }`, data)
             .then(response => response.json())
-            .then(trip => dispatch ({
-                type: 'DELETE_TRIP',
-                payload: trip
-            }))
+            // .then(trip => console.log(trip))
+            .then(trip => {
+                debugger
+
+                dispatch({
+                    type: 'DELETE_TRIP',
+                    payload: trip
+                })
+            })
             .catch(err => err)
     }
 }

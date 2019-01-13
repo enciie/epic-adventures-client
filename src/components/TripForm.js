@@ -7,11 +7,10 @@ import { createTrip } from '../actions/tripActions'
 import NavBar from './NavBar';
 
 import '../stylesheets/TripForm.css'
-import { Button } from 'mdbreact';
 
 class TripForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             name: "",
@@ -25,8 +24,6 @@ class TripForm extends Component {
     }
 
     handleChange = (event) => {
-        // const value = event.target.value
-        // const name = event.target.name
         const { name, value } = event.target
         this.setState({
             [name]: value,
@@ -34,17 +31,21 @@ class TripForm extends Component {
     }
     
     handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
+        console.log("This state", this.state)
+    
         this.props.createTrip(this.state)
+        
         this.setState({
             name: "",
             description: "",
             location: "",
-            img_url: ""   
+            img_url: ""
         })
-        debugger;
+
         this.props.history.push('/trips/mytrips')
+    
     }
 
     render() {
@@ -96,7 +97,7 @@ class TripForm extends Component {
                                 onChange={this.handleChange}
                             />
                         </div><br/>
-                        <Button type="submit">Add</Button>
+                        <button className="btn btn-default" type="submit">Add</button>
                     </form>
                     </div>
                 </div>
