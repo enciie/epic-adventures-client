@@ -16,7 +16,7 @@ export default (
         <Switch id='routes'>
             {/* component that will be created via Route will automatically be passed the following props objects:  */}
             {/* match, location, history */}
-            {/* macth object contains the following properties: params, isExact, path, url */}
+            {/* match object contains the following properties: params, isExact, path, url */}
             <Route exact path='/' render={ () => loggedIn() ? <Trips /> : <Redirect to="/login" />} />
             <Route path='/signup' component={ () => loggedIn() ? <Redirect to="/" /> : <Signup />} />
             <Route path='/login' component={ () => loggedIn() ? <Redirect to="/" /> : <Login />} />
