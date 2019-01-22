@@ -10,30 +10,30 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 class Login extends Component {
   constructor() {
-      super()
+    super()
 
-      this.state = {
-          username: 'test',
-          password: 'password'
-      }
-
-      this.onSubmit = this.handleSubmit.bind(this)
-      this.onChange = this.handleChange.bind(this)
+    this.state = {
+        username: 'test',
+        password: 'password'
     }
 
-  handleChange = (event) => {
-      const field = event.target.name
-      let state = this.state
+    this.onSubmit = this.handleSubmit.bind(this)
+    this.onChange = this.handleChange.bind(this)
+  }
 
-      state[field] = event.target.value
-      this.setState(state)
+  handleChange = (event) => {
+    const field = event.target.name
+    let state = this.state
+
+    state[field] = event.target.value
+    this.setState(state)
   }
 
   handleSubmit = (event) => {
-      event.preventDefault()
+    event.preventDefault()
 
-      const user = this.state
-      this.props.loginUser(user, () => this.props.history.push('/'))
+    const user = this.state
+    this.props.loginUser(user, () => this.props.history.push('/'))
   }
 
   render() {

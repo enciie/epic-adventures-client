@@ -13,10 +13,10 @@ class TripForm extends Component {
     super(props)
 
     this.state = {
-        name: "",
-        description: "",
-        location: "",
-        img_url: "https://i.imgur.com/IaEHwyB.jpg",
+      name: "",
+      description: "",
+      location: "",
+      img_url: "https://i.imgur.com/IaEHwyB.jpg",
     }
 
     this.onChange = this.handleChange.bind(this)
@@ -43,7 +43,7 @@ class TripForm extends Component {
         location: "",
         img_url: ""
     })
-    
+
     this.props.history.push('/trips/mytrips')
   }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import EditTripForm from '../containers/EditTripForm'
 import '../stylesheets/TripShowPage.css'
 import { MDBIcon } from 'mdbreact';
 

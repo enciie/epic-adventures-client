@@ -14,8 +14,8 @@ import '../stylesheets/Trip.css'
 class Trips extends Component {
 
   componentDidMount() {
-      this.props.fetchUser()
-      this.props.fetchTrips()
+    this.props.fetchUser()
+    this.props.fetchTrips()
   }
 
   render() {
