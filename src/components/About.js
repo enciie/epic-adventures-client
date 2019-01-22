@@ -10,7 +10,7 @@ console.log(sunset);
 const About = () => {
   return (
     <div>
-      <NavBar />
+    
       <div className="bg"></div>
       <div className="AboutContainer">
         <h1>ABOUT EPIC ADVENTURES</h1>

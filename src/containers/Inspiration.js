@@ -45,7 +45,7 @@ class LightboxPage extends React.Component {
     const { photoIndex, isOpen, images } = this.state;
     return (
         <>
-        <NavBar />
+
         <MDBContainer className="mt-5">
             <div className="mdb-lightbox no-margin">
                 <MDBRow>

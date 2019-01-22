@@ -53,7 +53,7 @@ class TripForm extends Component {
     console.log("propsAddForm", this.props)
     return (
       <div>
-        <NavBar />
+
         <div className="TripFormContainer">
           <h2 className="header">Add New Adventure</h2><br/>
           <div>

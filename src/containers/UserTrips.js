@@ -6,7 +6,6 @@ import { fetchUser } from '../actions/userActions'
 import { fetchTrips } from '../actions/tripActions'
 
 import TripCard from '../components/TripCard'
-import NavBar from '../components/NavBar';
 
 import '../stylesheets/Trip.css'
 
@@ -23,7 +22,7 @@ class UserTrips extends Component {
     console.log("UserTrips", userTrips)
     return (
       <div>
-        <NavBar />
+
         <div className="TripListContainter">
           <p className="Username">Logged in as: {user.username}</p>
           <h1 className="Header">MY EPIC ADVENTURES</h1>

@@ -10,9 +10,12 @@ import About from './components/About'
 import TripForm from './containers/TripForm'
 import UserTrips from './containers/UserTrips'
 import EditTripForm from './containers/EditTripForm'
+import NavBar from './components/NavBar'
 
 export default (
     <Router>
+      <>
+        <NavBar />
         <Switch id='routes'>
             {/* component that will be created via Route will automatically be passed the following props objects:  */}
             {/* match, location, history */}
@@ -23,12 +26,13 @@ export default (
             <Route path='/logout' component={ () => logout() } />
             <Route exact path='/about' component={ About } />
             <Route exact path='/trips/inspiration' component={Inspiration} />
-            <Route exact path='/trips/mytrips' component={ UserTrips } />
+            <Route exact path='/trips/mytrips' component={ () => loggedIn() ? <UserTrips/> : <Redirect to="/login" /> } />
             <Route exact path='/trips/new' component={() => loggedIn() ? <TripForm /> : <Redirect to="/login" />} />
             <Route exact path='/trips/:id/edit' component={ EditTripForm } />
             <Route exact path='/trips/:id' component={ TripShow } />
             <Route exact path='/trips' component={Trips} />
         </Switch>
+      </>
     </Router>
 )
 

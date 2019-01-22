@@ -38,7 +38,7 @@ class TripShow extends Component {
     console.log("TRIP SHOW PROPS", this.props)
       return (
         <div>
-          <NavBar />
+
           <div className="TripShowContainer">
             <p className="Username">Logged in as: {this.props.user.username}</p>
 

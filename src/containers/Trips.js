@@ -26,7 +26,7 @@ class Trips extends Component {
 
     return (
       <div>
-        <NavBar />
+
         <div className="TripListContainter">
           <p className="Username">Logged in as: {user.username}</p>
           <h1 className="Header">ADVENTURE AWAITS</h1>
