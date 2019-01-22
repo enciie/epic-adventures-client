@@ -21,27 +21,6 @@ export const fetchTrips = () => {
     }
 }
 
-// export const fetchUserTrips = userId => {
-//     let data = {
-//         method: 'GET',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json',
-//             'Authorization': sessionStorage.jwt
-//         }
-//     }
-
-//     return dispatch => {
-//         fetch(`${baseUrl}/users/${userId}/user_trips`, data)
-//             .then(response => response.json())
-//             .then(trips => dispatch({
-//                 type: 'FETCH_USER_TRIPS',
-//                 payload: trips
-//             }))
-//             .catch(err => err)
-//     }
-// }
-
 export const fetchCurrentTrip = id => {
     let data = {
         method: 'GET',
@@ -120,15 +99,10 @@ export const deleteTrip = id => {
     return dispatch => {
         fetch(`${ baseUrl }/trips/${ id }`, data)
             .then(response => response.json())
-            // .then(trip => console.log(trip))
-            .then(trip => {
-                debugger
-
-                dispatch({
+            .then(trip => dispatch({
                     type: 'DELETE_TRIP',
                     payload: trip
-                })
-            })
+                }))
             .catch(err => err)
     }
 }

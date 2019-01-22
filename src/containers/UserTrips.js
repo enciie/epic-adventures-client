@@ -28,11 +28,11 @@ class UserTrips extends Component {
                     <p className="Username">Logged in as: {user.username}</p>
                     <h1 className="Header">MY EPIC ADVENTURES</h1>
 
-                    { userTrips.map(trip => 
-                        <TripCard 
-                            key={trip.id} 
-                            match={match} 
-                            trip={trip} 
+                    { userTrips.map(trip =>
+                        <TripCard
+                            key={trip.id}
+                            match={match}
+                            trip={trip}
                         />
                     )}
 

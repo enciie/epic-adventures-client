@@ -2,7 +2,6 @@ import React from 'react'
 
 import '../stylesheets/Comment.css'
 
-// const Comment = ({ comment: { content, username } }) =>
 const Comment = ({ comment, user, deleteComment, tripId }) =>
   <div className="commentText">
     <span className="sub-text">{comment.username}</span>
@@ -11,8 +10,8 @@ const Comment = ({ comment, user, deleteComment, tripId }) =>
     ) : (
         ""
       )}
-    <p className="">{comment.content}</p> 
-  
+    <p className="">{comment.content}</p>
+
 </div>
 
 export default Comment;

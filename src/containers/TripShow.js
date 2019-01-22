@@ -7,8 +7,9 @@ import { fetchUser } from '../actions/userActions'
 import { fetchTrips, fetchCurrentTrip, deleteTrip, editTrip } from '../actions/tripActions'
 import { deleteComment } from '../actions/commentActions'
 
+import Buttons from '../components/Buttons'
 import TripShowPage from '../components/TripShowPage'
-import CommentForm from '../components/CommentForm'
+import CommentForm from './CommentForm'
 import NavBar from '../components/NavBar'
 import { MDBIcon } from 'mdbreact';
 
@@ -19,22 +20,17 @@ class TripShow extends Component {
         this.removeTrip = this.removeTrip.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const id = this.props.match.params.id;
         this.props.fetchCurrentTrip(id);
         this.props.fetchUser();
         this.props.fetchTrips();
-        console.log('mounted trip', this.props);
     }
 
     removeTrip(id) {
-   
         const { deleteTrip, history } = this.props;
-  
         deleteTrip(id);
-
         history.push('/trips/mytrips');
- 
     }
 
     render() {
@@ -47,28 +43,13 @@ class TripShow extends Component {
                         <p className="Username">Logged in as: {this.props.user.username}</p>
 
                         <div className="TripShow">
-                            <div className="text-center">
-                            {(user.id === trip.user_id) ? (
-                                <>
-                                <button className="btn btn-default btn-md custom">
-                                    <Link
-                                        style={{ textDecoration: 'none', color: 'white' }}
-                                        to={{
-                                            pathname: `${match.url}/edit`,
-                                            state: { trip }
-                                        }}
-                                    >
-                                        <MDBIcon icon="pencil" />
-                                    </Link>
-                                </button>
-                                <button onClick={() => this.removeTrip(trip.id)} className="btn btn-default btn-md custom" >
-                                        <MDBIcon icon="trash-o" />
-                                </button>
-                                </>
-                            ) : (
-                                ""
-                                )}
-                            </div>
+                            <Buttons
+                              user={user}
+                              trip={trip}
+                              tripId={trip.id}
+                              match={match}
+                              deleteTrip={this.removeTrip}
+                            />
                             <TripShowPage
                                 key={trip.id}
                                 match={match}
