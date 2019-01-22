@@ -10,7 +10,6 @@ import { deleteComment } from '../actions/commentActions'
 import Buttons from '../components/Buttons'
 import TripShowPage from '../components/TripShowPage'
 import CommentForm from './CommentForm'
-import NavBar from '../components/NavBar'
 
 class TripShow extends Component {
   constructor() {

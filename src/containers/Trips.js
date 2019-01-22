@@ -7,7 +7,6 @@ import { fetchUser } from '../actions/userActions'
 import { fetchTrips } from '../actions/tripActions'
 
 import TripCard from '../components/TripCard'
-import NavBar from '../components/NavBar'
 
 import '../stylesheets/Trip.css'
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import Lightbox from "react-image-lightbox";
-import NavBar from '../components/NavBar';
 import '../stylesheets/Lightbox.css'
 
 class LightboxPage extends React.Component {

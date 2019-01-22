@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { editTrip } from '../actions/tripActions'
-import NavBar from '../components/NavBar';
 
 import '../stylesheets/TripForm.css'
 
@@ -64,7 +63,7 @@ class EditTripForm extends Component {
 
     return (
       <div>
-      
+
           <div className="TripFormContainer">
             <h2 className="header">Edit Adventure</h2><br/>
             <form className="TripForm" onSubmit={this.handleSubmit}>

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { createTrip } from '../actions/tripActions'
-import NavBar from '../components/NavBar';
 
 import '../stylesheets/TripForm.css'
 
