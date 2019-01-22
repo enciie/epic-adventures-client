@@ -40,7 +40,7 @@ class Trips extends Component {
     )
   }
 }
-
+//recieve state fron the store whenever there is a change and make that data available to the component as props
 const mapStateToProps = state => {
     console.log("state", state)
     return {
@@ -49,6 +49,7 @@ const mapStateToProps = state => {
     }
 }
 
+//let's us invoke our actions directly
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUser,
     fetchTrips

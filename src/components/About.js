@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../components/NavBar';
 import sunset from '../images/sunset.png';
 
 import '../stylesheets/About.css'
@@ -10,7 +9,7 @@ console.log(sunset);
 const About = () => {
   return (
     <div>
-    
+
       <div className="bg"></div>
       <div className="AboutContainer">
         <h1>ABOUT EPIC ADVENTURES</h1>

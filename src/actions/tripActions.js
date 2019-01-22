@@ -21,6 +21,9 @@ export const fetchTrips = () => {
     }
 }
 
+//fetch request returns a promise object
+//we can access the data when the promise "resolves" and becomes available by chaining a then() func
+
 export const fetchCurrentTrip = id => {
     let data = {
         method: 'GET',
@@ -105,3 +108,8 @@ export const deleteTrip = id => {
             .catch(err => err)
     }
 }
+
+//redux thunk allows us to return a function inside of our action bindActionCreators
+// i/o plain old js object. that returned function recieves the store's dispatch func
+//and with that we are able to dispatch multiple actions: (1) one to place the state in loading state
+//(2) to update our store
