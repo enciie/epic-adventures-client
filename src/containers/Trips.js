@@ -13,7 +13,7 @@ import '../stylesheets/Trip.css'
 
 class Trips extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
       this.props.fetchUser()
       this.props.fetchTrips()
   }

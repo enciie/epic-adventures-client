@@ -86,7 +86,6 @@ export const editTrip = trip => {
 }
 
 export const deleteTrip = id => {
-    debugger
     let data = {
         method: 'DELETE',
         headers: {

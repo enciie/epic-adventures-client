@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import { fetchUser } from '../actions/userActions'
 import { fetchTrips, fetchCurrentTrip, deleteTrip, editTrip } from '../actions/tripActions'
@@ -11,7 +11,6 @@ import Buttons from '../components/Buttons'
 import TripShowPage from '../components/TripShowPage'
 import CommentForm from './CommentForm'
 import NavBar from '../components/NavBar'
-import { MDBIcon } from 'mdbreact';
 
 class TripShow extends Component {
     constructor() {
@@ -20,7 +19,7 @@ class TripShow extends Component {
         this.removeTrip = this.removeTrip.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const id = this.props.match.params.id;
         this.props.fetchCurrentTrip(id);
         this.props.fetchUser();
@@ -30,6 +29,7 @@ class TripShow extends Component {
     removeTrip(id) {
         const { deleteTrip, history } = this.props;
         deleteTrip(id);
+
         history.push('/trips/mytrips');
     }
 

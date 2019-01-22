@@ -43,7 +43,7 @@ class TripForm extends Component {
         location: "",
         img_url: ""
     })
-
+    
     this.props.history.push('/trips/mytrips')
   }
 

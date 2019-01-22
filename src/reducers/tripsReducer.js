@@ -18,18 +18,15 @@ export default function tripsReducer(state = initialState, action) {
             return { ...state, all: [...state.all, action.payload], current: action.payload }
 
         case 'EDIT_TRIP':
-   
             let all = [...state.all]
- 
-            let idx = all.findIndex(trip => trip.id === action.payload.id)
 
+            let idx = all.findIndex(trip => trip.id === action.payload.id)
+            
             all.splice(idx, 1, action.payload)
             console.log('EDIT_TRIP...', { ...state, all: all, current: action.payload } )
             return {...state, all: all, current: action.payload }
 
         case 'DELETE_TRIP':
-            debugger;
-    
             console.log('DELETE_TRIP...', { ...state, all: state.all.filter(trip => trip.id !== action.payload.id), current: {} })
             return { ...state, all: state.all.filter(trip => trip.id !== action.payload.id), current: {} }
 
@@ -38,7 +35,7 @@ export default function tripsReducer(state = initialState, action) {
             all = [...state.all]
 
             idx = all.findIndex(trip => trip.id === action.payload.trip_id)
- 
+
             all[idx].comments.push(action.payload)
             console.log('CREATE_COMMENT...', { ...state, all: all, current: all[idx] })
             return { ...state, all: all, current: all[idx] }
@@ -50,7 +47,7 @@ export default function tripsReducer(state = initialState, action) {
             console.log('DELETE_COMMENT...', { ...state, all: all, current: all[idx] })
             return { ...state, all: all, current: all[idx] }
 
-        default: 
+        default:
             return state
     }
 }
